@@ -14,31 +14,22 @@
 	 });
 	 function didi(){
 	    var data = JSON.stringify({
-  "recipient": {
-    "line_1": "1234 N. 1st Street",
-    "line_2": "n°56",
-    "city": "San Francisco",
-    "state": "CA",
-    "zip": "12345",
-    "country": "US"
-  },
-  "name": "Widgets Inc.",
-  "amount": 5,
-  "description": "Test Check"
+  "user_id": "jsmith@example.com",
+  "name": "John Smith"
 });
 
 var xhr = new XMLHttpRequest();
 
 xhr.addEventListener("readystatechange", function () {
   if (this.readyState === this.DONE) {
-    console.log("Response");
     console.log(this.responseText);
   }
 });
 
-xhr.open("POST", "https://demo.checkbook.io/v3/check/physical");
+xhr.open("POST", "https://demo.checkbook.io/v3/user");
 xhr.setRequestHeader("accept", "application/json");
 xhr.setRequestHeader("content-type", "application/json");
+xhr.setRequestHeader("authorization", "d6aa2703655f4ba2af2a56202961ca86:dXbCgzYBMibj8ZwuQMd2NXr6rtvjZ8");
 
 xhr.send(data);
 	 }
