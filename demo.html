@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrapg Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script type="text/javascript">
+     $(document).ready(function(){
+	    //FetchCall();
+		didi();
+	 });
+	 function didi(){
+	    var data = JSON.stringify({
+  "recipient": {
+    "line_1": "1234 N. 1st Street",
+    "line_2": "n°56",
+    "city": "San Francisco",
+    "state": "CA",
+    "zip": "12345",
+    "country": "US"
+  },
+  "name": "Widgets Inc.",
+  "amount": 5,
+  "description": "Test Check"
+});
+
+var xhr = new XMLHttpRequest();
+
+xhr.addEventListener("readystatechange", function () {
+  if (this.readyState === this.DONE) {
+    console.log("Response");
+    console.log(this.responseText);
+  }
+});
+
+xhr.open("POST", "https://demo.checkbook.io/v3/check/physical");
+xhr.setRequestHeader("accept", "application/json");
+xhr.setRequestHeader("content-type", "application/json");
+
+xhr.send(data);
+	 }
+  </script>
+</head>
+<body>
+
+<div class="container">
+  <h1>My First Bootstrap Page</h1>
+  <p>This is some text.</p>
+</div>
+
+</body>
+</html>
